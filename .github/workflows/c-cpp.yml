@@ -30,14 +30,13 @@ jobs:
           env: |
             BIN: bot-${{ matrix.arch }}-${{ matrix.distro }}
           shell: /bin/sh
+          dockerRunArgs: |
+            --volume "${PWD}/artifacts:/artifacts"
           install: |
             apt update
             apt upgrade -y
             apt install git binutils make clang -y
-          run: |
-            uname -a
-            bash ./configure.sh
-            make
+          run: "uname -a && bash ./configure.sh && make && mv $BIN /artifacts -v"
       #    - name: ./configure
       #      run: bash ./configure.sh
       #    - name: make
