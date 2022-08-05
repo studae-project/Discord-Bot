@@ -8,12 +8,30 @@ on:
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    strategy:
+      build_arch:
+        include:
+          - arch: aarch64
+            distro: ubuntu_latest
+          - arch: armv7
+            distro: ubuntu_latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: ./configure
-      run: bash ./configure.sh
-    - name: make
-      run: make
+      - uses: actions/checkout@v3
+      - uses: uraimo/run-on-arch-action@v2
+        name: Build artifact
+        id: build
+        with:
+          arch: ${{ build_arch.arch }}
+          distro: ${{ build_arch.distro }}
+          githubToken: ${{ github.token }}
+          env: |
+            BIN: bot-${{ build_arch.arch }}-${{ build_arch.distro }}
+          shell: /bin/sh
+          run: |
+            bash ./configure.sh
+            make
+      #    - name: ./configure
+      #      run: bash ./configure.sh
+      #    - name: make
+      #      run: make

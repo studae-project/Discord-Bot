@@ -5,13 +5,15 @@ LFLAGS += -lcurl -ldiscord -lpthread -pthread
 SRC = $(wildcard src/*.c) $(wildcard src/**/*.c)
 OBJ = $(SRC:.c=.o)
 
+BIN ?= bot
+
 all: compile
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 compile: $(OBJ)
-	$(CC) -o bot $(OBJ) $(CFLAGS) $(LFLAGS)
+	$(CC) -o $(BIN) $(OBJ) $(CFLAGS) $(LFLAGS)
 
 run: bot
 	./$<
