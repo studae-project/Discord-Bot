@@ -21,5 +21,3 @@ make
 make install
 
 cd $DIR
-
-make clean all
