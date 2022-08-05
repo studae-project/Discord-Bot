@@ -1,6 +1,6 @@
 CC = clang
 CFLAGS += -Wall -Wpedantic -Wwrite-strings -Ofast -Iinclude/
-LFLAGS += -ldiscord -lcurl -lpthread -pthread -Llib/
+LFLAGS += -Llib/ -lcurl -ldiscord
 
 SRC = $(wildcard src/*.c) $(wildcard src/**/*.c)
 OBJ = $(SRC:.c=.o)
