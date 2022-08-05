@@ -18,6 +18,11 @@ if [[ "$(command -v ar)" == "" ]]; then
   sudo apt install binutils -y > /dev/null
 fi
 
+if [[ "$(command -v curl)" == "" ]]; then
+  echo "Package curl not found! installing curl..."
+  sudo apt install curl libcurl* -y > /dev/null
+fi
+
 DIR=$(pwd)
 export PREFIX=$DIR
 
