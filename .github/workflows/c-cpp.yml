@@ -8,8 +8,9 @@ on:
 
 jobs:
   build:
+
     strategy:
-      build_arch:
+      matrix:
         include:
           - arch: aarch64
             distro: ubuntu_latest
@@ -22,11 +23,11 @@ jobs:
         name: Build artifact
         id: build
         with:
-          arch: ${{ build_arch.arch }}
-          distro: ${{ build_arch.distro }}
+          arch: ${{ matrix.arch }}
+          distro: ${{ matrix.distro }}
           githubToken: ${{ github.token }}
           env: |
-            BIN: bot-${{ build_arch.arch }}-${{ build_arch.distro }}
+            BIN: bot-${{ matrix.arch }}-${{ matrix.distro }}
           shell: /bin/sh
           run: |
             bash ./configure.sh
