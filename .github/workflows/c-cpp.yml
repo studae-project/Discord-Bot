@@ -27,6 +27,7 @@ jobs:
           arch: ${{ matrix.arch }}
           distro: ${{ matrix.distro }}
           githubToken: ${{ github.token }}
+          setup: 'mkdir -p "${PWD}/artifacts"'
           env: |
             BIN: bot-${{ matrix.arch }}-${{ matrix.distro }}
           shell: /bin/sh
