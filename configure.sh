@@ -1,13 +1,3 @@
-SUDO_PATH=$(command -v sudo)
-
-sudo() {
-  if [[ "$SUDO_PATH" == "" || "$TERMUX_VERSION" != "" ]]; then
-    eval "$@"
-  else
-    eval "$SUDO_PATH $@"
-  fi
-}
-
 if [[ "$(command -v git)" == "" ]]; then
   echo "Package git not found! installing git..."
   sudo apt install git -y > /dev/null
@@ -18,7 +8,7 @@ if [[ "$(command -v ar)" == "" ]]; then
   sudo apt install binutils -y > /dev/null
 fi
 
-sudo apt install curl libcurl* -y > /dev/null
+sudo apt install curl libcurl*
 
 DIR=$(pwd)
 export PREFIX=$DIR
