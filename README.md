@@ -6,8 +6,8 @@ Ao contribuir com esse repositório, você concorda com:
 1. O código é de livre acesso ao público;
 2. O código poderá ser usado pela comunidade Studae;
 3. O bot é público e você, apesar de contribuir, não pode reivindicar autoria por ele;
-4. Você concorda em seguir o guia exposto abaixo de como contribuir com esse repositório.
-
+4. O nome das branchs, mensagens dos commits e comentários nos arquivos devem, **OBRIGATORIAMENTE**, estarem em portugês. Somente os nomes das classes, dos atributos e das variáveis e dos métodos devem estar, **OBRIGATORIAMENTE**, em inglês;
+5. Você concorda em seguir o guia exposto abaixo de como contribuir com esse repositório.
 
 ## Enviando mudanças de código
 Todos as solicitações de mudança ou implementação de novas funcionalidades no código deverão ser enviadas por **_pull request_ (PR)**, que será analisado pela equipe responsável por manter o repositório.
