@@ -1,3 +1,5 @@
+sudo apt-get install -y libcurl4-openssl-dev
+
 if [[ "$(command -v git)" == "" ]]; then
   echo "Package git not found! installing git..."
   sudo apt install git -y > /dev/null
@@ -7,8 +9,6 @@ if [[ "$(command -v ar)" == "" ]]; then
   echo "Package binutils not found! installing binutils..."
   sudo apt install binutils -y > /dev/null
 fi
-
-sudo apt install curl libcurl*
 
 DIR=$(pwd)
 export PREFIX=$DIR
