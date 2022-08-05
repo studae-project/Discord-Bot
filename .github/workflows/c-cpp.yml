@@ -38,6 +38,10 @@ jobs:
             apt upgrade -y
             apt install git binutils make clang -y
           run: "uname -a && bash ./configure.sh && make && mv $BIN /artifacts -v"
+      - uses: actions/upload-artifact@v2
+        with:
+          name: bot-${{ matrix.arch }}-${{ matrix.distro }}
+          path: artifacts/bot-${{ matrix.arch }}+${{ matrix.distro }}
       #    - name: ./configure
       #      run: bash ./configure.sh
       #    - name: make
