@@ -16,4 +16,6 @@ export PREFIX=/usr/local
 git clone https://github.com/Cogmasters/concord
 cd concord
 
+make all install
+
 cd $DIR
