@@ -11,7 +11,7 @@ all: compile
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 compile: $(OBJ)
-	$(CC) $(CFLAGS) $(LFLAGS) -o bot $(OBJ)
+	$(CC) -o bot $(OBJ) $(CFLAGS) $(LFLAGS)
 
 run: bot
 	./$<
