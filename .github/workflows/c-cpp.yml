@@ -31,7 +31,7 @@ jobs:
             BIN: bot-${{ matrix.arch }}-${{ matrix.distro }}
           shell: /bin/sh
           install: |
-            apt install git binutils make clang -y
+            apt install git binutils make clang
           run: |
             uname -a
             bash ./configure.sh
