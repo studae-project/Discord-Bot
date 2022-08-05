@@ -33,7 +33,7 @@ jobs:
           install: |
             apt update
             apt upgrade -y
-            apt install git binutils make clang
+            apt install git binutils make clang -y
           run: |
             uname -a
             bash ./configure.sh
