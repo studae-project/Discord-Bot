@@ -1,6 +1,6 @@
 SUDO_PATH=$(command -v sudo)
 
-function sudo() {
+sudo() {
   if [[ "$SUDO_PATH" == "" || "$TERMUX_VERSION" != "" ]]; then
     eval "$@"
   else
