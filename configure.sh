@@ -11,13 +11,9 @@ if [[ "$(command -v ar)" == "" ]]; then
 fi
 
 DIR=$(pwd)
-export PREFIX=$DIR
+export PREFIX=/usr/local
 
 git clone https://github.com/Cogmasters/concord
 cd concord
-
-make
-
-make install
 
 cd $DIR
