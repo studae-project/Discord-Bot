@@ -13,7 +13,7 @@ public class BooleanAdapter implements Adapter<Boolean> {
     public Boolean adapt(Context context, Argument argument) {
         return context.getOptionMapping(argument.getName())
           .map(OptionMapping::getAsBoolean)
-          .orElse(null);
+          .orElse(Optional.empty());
     }
 
     @Override
