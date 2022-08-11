@@ -1,14 +1,16 @@
 package br.com.studae.commons.command;
 
 import br.com.studae.commons.command.adapter.Adapter;
-import br.com.studae.commons.command.collection.Pair;
 import br.com.studae.commons.command.context.Argument;
 import br.com.studae.commons.command.context.Context;
+import br.com.studae.commons.command.exception.NoSuchArgumentException;
 import lombok.AllArgsConstructor;
 import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Map;
+import java.util.Optional;
 
 @AllArgsConstructor
 public class CommandProcessor {
@@ -31,11 +33,15 @@ public class CommandProcessor {
               event.getMessageChannel()
             );
 
-            for (Pair<Argument, Adapter<?>> parameter : commandInfo.parameters()) {
-                Argument argument = parameter.a();
-                Adapter<?> adapter = parameter.b();
+            for (Map.Entry<Argument, Adapter<?>> parameter : commandInfo.parameters().entrySet()) {
+                Argument argument = parameter.getKey();
+                Adapter<?> adapter = parameter.getValue();
 
-                params[argument.getIndex()] = adapter.adapt(context, argument);
+                Optional<?> optional = adapter.adapt(context, argument);
+                if(optional.isPresent())
+                    params[argument.getIndex()] = optional.get();
+                else
+                    throw new NoSuchArgumentException(argument.getName());
             }
 
             event.deferReply().queue();

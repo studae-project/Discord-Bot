@@ -9,7 +9,7 @@ import java.util.HashSet;
 
 public class AdapterMap extends HashSet<Adapter<?>> {
 
-    public Adapter getAdapter(Class<?> type) {
+    public Adapter<?> getAdapter(Class<?> type) {
         return stream()
           .filter(adapter -> Arrays.asList(adapter.getTypes()).contains(type))
           .findAny()

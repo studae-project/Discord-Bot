@@ -5,11 +5,13 @@ import br.com.studae.commons.command.context.Argument;
 import br.com.studae.commons.command.context.Context;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 
+import java.util.Optional;
+
 public class ContextAdapter implements Adapter<Context> {
 
     @Override
-    public Context adapt(Context context, Argument argument) {
-        return context;
+    public Optional<Context> adapt(Context context, Argument argument) {
+        return Optional.of(context);
     }
 
     @Override

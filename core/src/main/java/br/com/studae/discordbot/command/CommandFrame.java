@@ -1,13 +1,15 @@
-package br.com.studae.commons.command;
+package br.com.studae.discordbot.command;
 
+import br.com.studae.commons.command.CommandInfo;
+import br.com.studae.commons.command.CommandMap;
+import br.com.studae.commons.command.CommandProcessor;
 import br.com.studae.commons.command.adapter.Adapter;
 import br.com.studae.commons.command.adapter.AdapterMap;
 import br.com.studae.commons.command.annotation.Command;
-import br.com.studae.commons.command.collection.Pair;
 import br.com.studae.commons.command.context.Argument;
 import br.com.studae.commons.command.exception.CommandAlreadyRegisteredException;
 import br.com.studae.commons.command.exception.NoSuchAdapterException;
-import br.com.studae.commons.command.listener.CommandListener;
+import br.com.studae.discordbot.command.listener.CommandListener;
 import lombok.RequiredArgsConstructor;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
@@ -15,9 +17,7 @@ import net.dv8tion.jda.api.requests.restaction.CommandCreateAction;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -57,7 +57,7 @@ public class CommandFrame {
                 throw new CommandAlreadyRegisteredException(command.name());
 
             List<CommandCreateAction> actions = provideActions(command);
-            List<Pair<Argument, Adapter<?>>> arguments = provideArguments(method, actions);
+            Map<Argument, Adapter<?>> arguments = provideArguments(method, actions);
 
             CommandInfo commandInfo = new CommandInfo(
               command,
@@ -87,8 +87,8 @@ public class CommandFrame {
         // TODO: Implement register all commands from a package
     }
 
-    private List<Pair<Argument, Adapter<?>>> provideArguments(Method method, List<CommandCreateAction> actions) {
-        List<Pair<Argument, Adapter<?>>> arguments = new ArrayList<>();
+    private Map<Argument, Adapter<?>> provideArguments(Method method, List<CommandCreateAction> actions) {
+        HashMap<Argument, Adapter<?>> arguments = new HashMap<>();
 
         Parameter[] parameters = method.getParameters();
         for (int index = 0; index < parameters.length; index++) {
@@ -118,7 +118,7 @@ public class CommandFrame {
                 }
             };
 
-            arguments.add(new Pair<>(argument, adapter));
+            arguments.put(argument, adapter);
         }
         return arguments;
     }

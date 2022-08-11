@@ -1,4 +1,4 @@
-package br.com.studae.commons.command.listener;
+package br.com.studae.discordbot.command.listener;
 
 import br.com.studae.commons.command.CommandInfo;
 import br.com.studae.commons.command.CommandMap;

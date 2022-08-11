@@ -2,12 +2,11 @@ package br.com.studae.commons.command;
 
 import br.com.studae.commons.command.adapter.Adapter;
 import br.com.studae.commons.command.annotation.Command;
-import br.com.studae.commons.command.collection.Pair;
 import br.com.studae.commons.command.context.Argument;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
-import java.util.List;
+import java.util.Map;
 
 public record CommandInfo(
   Command command,
@@ -15,6 +14,5 @@ public record CommandInfo(
   Method method,
   Object object,
   Parameter[] params,
-  List<Pair<Argument, Adapter<?>>> parameters
-) {
-}
+  Map<Argument, Adapter<?>> parameters
+) {}

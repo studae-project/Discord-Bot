@@ -5,7 +5,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+@Target({ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.PARAMETER)
-public @interface Optional {
+public @interface Parameter {
+
+    String name();
+
+    String description();
+
+    boolean required() default true;
 }

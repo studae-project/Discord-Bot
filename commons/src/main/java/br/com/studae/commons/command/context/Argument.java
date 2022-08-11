@@ -1,10 +1,9 @@
 package br.com.studae.commons.command.context;
 
-import br.com.studae.commons.command.annotation.Optional;
+import br.com.studae.commons.command.annotation.Parameter;
 import lombok.Getter;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.Parameter;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,27 +11,27 @@ import java.util.List;
 public class Argument {
 
     private int index;
-    private Parameter parameter;
+    private java.lang.reflect.Parameter parameter;
 
     private String name;
 
-    private List<Parameter> parameters;
+    private List<java.lang.reflect.Parameter> parameters;
     private List<Annotation> annotations;
 
     private boolean required;
 
     public Argument(
-      int index,
-      Parameter parameter,
-      Parameter[] parameters,
-      Annotation[] annotations
+            int index,
+            java.lang.reflect.Parameter parameter,
+            java.lang.reflect.Parameter[] parameters,
+            Annotation[] annotations
     ) {
         this.index = index;
         this.parameter = parameter;
         this.name = parameter.getName();
         this.parameters = Arrays.asList(parameters);
         this.annotations = Arrays.asList(annotations);
-        this.required = !parameter.isAnnotationPresent(Optional.class);
+        this.required = !parameter.isAnnotationPresent(Parameter.class) || parameter.getAnnotation(Parameter.class).required();
     }
 
     public boolean hasAnnotation(Class<Annotation> annotation) {

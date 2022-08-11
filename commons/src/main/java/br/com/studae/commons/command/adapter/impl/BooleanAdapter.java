@@ -7,13 +7,13 @@ import net.dv8tion.jda.api.interactions.commands.OptionMapping;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 
+import java.util.Optional;
+
 public class BooleanAdapter implements Adapter<Boolean> {
 
     @Override
-    public Boolean adapt(Context context, Argument argument) {
-        return context.getOptionMapping(argument.getName())
-          .map(OptionMapping::getAsBoolean)
-          .orElse(Optional.empty());
+    public Optional<Boolean> adapt(Context context, Argument argument) {
+        return context.getOptionMapping(argument.getName()).map(OptionMapping::getAsBoolean);
     }
 
     @Override

@@ -7,13 +7,13 @@ import net.dv8tion.jda.api.interactions.commands.OptionMapping;
 import net.dv8tion.jda.api.interactions.commands.OptionType;
 import net.dv8tion.jda.api.interactions.commands.build.OptionData;
 
+import java.util.Optional;
+
 public class StringAdapter implements Adapter<String> {
 
     @Override
-    public String adapt(Context context, Argument argument) {
-        return context.getOptionMapping(name(argument.getParameter()))
-          .map(OptionMapping::getAsString)
-          .orElse(null);
+    public Optional<String> adapt(Context context, Argument argument) {
+        return context.getOptionMapping(name(argument.getParameter())).map(OptionMapping::getAsString);
     }
 
     @Override
