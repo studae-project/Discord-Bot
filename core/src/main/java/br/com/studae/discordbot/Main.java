@@ -1,8 +1,7 @@
 package br.com.studae.discordbot;
 
-import br.com.studae.commons.Module;
-import br.com.studae.commons.StudaeModule;
-import br.com.studae.registerer.Registerer;
+import br.com.studae.commons.module.Module;
+import br.com.studae.commons.module.StudaeModule;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.TextChannel;
@@ -16,7 +15,6 @@ import org.reflections.Reflections;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Main {

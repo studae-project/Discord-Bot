@@ -1,6 +1,6 @@
 package br.com.studae.discordbot;
 
-import br.com.studae.commons.Module;
+import br.com.studae.commons.module.Module;
 import net.dv8tion.jda.api.JDA;
 
 import java.util.ArrayList;

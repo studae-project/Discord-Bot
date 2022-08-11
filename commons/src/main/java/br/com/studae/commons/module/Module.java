@@ -1,4 +1,4 @@
-package br.com.studae.commons;
+package br.com.studae.commons.module;
 
 import net.dv8tion.jda.api.hooks.EventListener;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
