@@ -68,14 +68,11 @@ public class CommandFrame {
               arguments
             );
 
-            for (CommandCreateAction action : actions) {
-                action.queue(cmd -> {
-                    commandMap.put(
-                      cmd.getName(),
-                      commandInfo
-                    );
-                });
-            }
+            for (CommandCreateAction action : actions)
+                action.queue(cmd -> commandMap.put(
+                  cmd.getName(),
+                  commandInfo
+                ));
         }
     }
 
@@ -126,7 +123,14 @@ public class CommandFrame {
     private List<CommandCreateAction> provideActions(Command command) {
         return jda.getGuilds()
           .stream()
-          .map(guild -> guild.upsertCommand(command.name(), command.description()))
+          .flatMap(guild -> {
+              List<CommandCreateAction> commands = new ArrayList<>(command.aliases().length + 1);
+              commands.add(guild.upsertCommand(command.name(), command.description()));
+
+              for (String alias : command.aliases()) commands.add(guild.upsertCommand(alias, command.description()));
+
+              return commands.stream();
+          })
           .collect(Collectors.toList());
     }
 
