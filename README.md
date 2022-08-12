@@ -23,12 +23,12 @@ Todos as solicitações de mudança ou implementação de novas funcionalidades 
 
 ### Criando um novo branch
 O nome do seu branch deve explicar o que foi feito, seguindo a seguinte regra:
-* Para PR que farão correções de bugs, utilizar o prefixo `correcao/<o que está sendo corrigido>`;
-* Para PR que adicionarão funcionalidades ao bot, utilizar o prefixo `funcionalidade/<o que está sendo adicionado>`.
+* Para PR que farão correções de bugs, utilizar o prefixo `fix/<o que está sendo corrigido>`;
+* Para PR que adicionarão funcionalidades ao bot, utilizar o prefixo `feat/<o que está sendo adicionado>`.
 
-**\* Exemplo¹:** se você está corrigindo um bug de mensagem quando um usuário entra, você pode utilizar uma branch com o nome `correcao/erro-mensagem-ao-entrar`;
+**\* Exemplo¹:** se você está corrigindo um bug de mensagem quando um usuário entra, você pode utilizar uma branch com o nome `fix/erro-mensagem-ao-entrar`;
 
-**\* Exemplo²:** se você está adicionando um comando ao bot, você pode utilizar uma branch com o nome `funcionalidade/comando-<o que o comando faz>`;
+**\* Exemplo²:** se você está adicionando um comando ao bot, você pode utilizar uma branch com o nome `feat/comando-<o que o comando faz>`;
 
 ### Commit
 1. Rode o comando `git add [arquivos alterados]` para adicionar os arquivos à fila de commit;
