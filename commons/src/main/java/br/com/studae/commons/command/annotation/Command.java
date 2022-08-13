@@ -13,6 +13,8 @@ public @interface Command {
 
     String name();
 
+    String[] aliases() default {};
+
     String description();
 
     Permission permission() default Permission.UNKNOWN;
