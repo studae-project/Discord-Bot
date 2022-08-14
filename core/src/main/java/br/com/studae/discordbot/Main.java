@@ -2,7 +2,6 @@ package br.com.studae.discordbot;
 
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
-import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.hooks.EventListener;
 import net.dv8tion.jda.api.requests.GatewayIntent;
@@ -29,12 +28,9 @@ public class Main {
 
                     System.out.printf("Bot inicializado em %f segundos\n", (System.currentTimeMillis() - start) / 1000.0);
                     System.out.printf("Atualmente, estou monitorando %d grupos!\n", readyEvent.getGuildTotalCount());
-
-                    TextChannel channel = readyEvent.getJDA().getGuilds().get(0).getTextChannelsByName("geral", true).get(0);
-                    channel.sendMessage("Olá pessoal da Studae, sou eu, o Studae Bot!").queue();
                 });
 
-        new Bot(builder.build());
+        new BotImpl(builder.build());
     }
 
 }
