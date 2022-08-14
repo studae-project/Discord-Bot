@@ -1,27 +1,24 @@
 package br.com.studae.commons.module;
 
-import net.dv8tion.jda.api.hooks.EventListener;
-import net.dv8tion.jda.api.hooks.ListenerAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
+import br.com.studae.commons.Bot;
 
 public abstract class Module {
 
-    public Module() {
+    private final String name, description;
 
+    public Module(String name) {
+        this(name, null);
     }
 
-    public abstract List<ListenerAdapter> registerModuleEvents();
+    public Module(String name, String description) {
+        this.name = name;
+        this.description = description;
 
-    public List<ListenerAdapter> getModuleEvents() {
-        return registerModuleEvents();
+        Bot.getInstance().registerModule(this);
     }
 
     @Override
     public String toString() {
-        return "Module{" +
-                "events=" + getModuleEvents() +
-                '}';
+        return String.format("Module{Name=%s,Description=%s}", name, description == null ? "Not defined" : description);
     }
 }
