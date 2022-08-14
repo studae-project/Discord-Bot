@@ -11,8 +11,6 @@
 
     <modules>
         <module>core</module>
-        <module>welcome</module>
-        <module>registerer</module>
         <module>commons</module>
     </modules>
 

@@ -19,11 +19,6 @@
     <dependencies>
         <dependency>
             <groupId>br.com.studae</groupId>
-            <artifactId>registerer</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>br.com.studae</groupId>
             <artifactId>commons</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -31,11 +26,6 @@
             <groupId>org.reflections</groupId>
             <artifactId>reflections</artifactId>
             <version>0.10.2</version>
-        </dependency>
-        <dependency>
-            <groupId>br.com.studae</groupId>
-            <artifactId>welcome</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
